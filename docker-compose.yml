@@ -1,0 +1,9 @@
+version:
+  '3'
+
+services:
+  redis_svc_venv:
+    image: redis
+    container_name: redis_svc
+    ports:
+      - "6379:6379"
