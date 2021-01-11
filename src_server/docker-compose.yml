@@ -1,0 +1,21 @@
+version:
+  '3'
+
+services:
+  redis_sv:
+    image: redis
+    container_name: redis_sv
+    ports:
+      - "6379:6379"
+
+  chat_sv:
+    build: .
+    container_name: chat_sv
+    environment:
+      - PORT=8000
+      - REDIS_HOST=redis_sv
+      - REDIS_PORT=6379
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis_sv
